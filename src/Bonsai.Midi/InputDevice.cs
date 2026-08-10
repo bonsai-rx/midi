@@ -14,9 +14,12 @@ namespace Bonsai.Midi
     public class InputDevice : Source<MidiEvent>
     {
         /// <summary>
-        /// Gets or sets the index of the MIDI input device to connect to.
+        /// Gets or sets the name of the MIDI input device to read events from.
+        /// If no name is specified, the first available device will be used.
         /// </summary>
-        public int? Index { get; set; }
+        [TypeConverter(typeof(MidiDeviceNameConverter))]
+        [Description("The name of the MIDI input device to read events from. If no name is specified, the first available device will be used.")]
+        public string DeviceName { get; set; }
 
         /// <summary>
         /// Generates an observable sequence of all MIDI events from the specified
@@ -27,7 +30,7 @@ namespace Bonsai.Midi
         {
             return Observable.Create<MidiEvent>(observer =>
             {
-                var device = Melanchall.DryWetMidi.Multimedia.InputDevice.GetByIndex(Index.GetValueOrDefault());
+                var device = MidiDeviceHelper.GetDevice(DeviceName);
                 void EventReceivedHandler(object sender, MidiEventReceivedEventArgs e)
                 {
                     observer.OnNext(e.Event);
