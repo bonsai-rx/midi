@@ -1,6 +1,7 @@
 .vs/
+**/.bonsai/Bonsai.exe*
+**/.bonsai/Packages/
+**/.bonsai/Settings/
 /artifacts/
 Packages/
-*.exe
-*.exe.settings
 *.user
