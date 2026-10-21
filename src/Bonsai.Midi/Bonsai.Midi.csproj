@@ -3,8 +3,7 @@
   <PropertyGroup>
     <Description>Bonsai Library containing reactive infrastructure to interface with MIDI devices.</Description>
     <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
-    <PackageType>Dependency;BonsaiLibrary</PackageType>
-    <PackageTags>Bonsai Rx MIDI</PackageTags>
+    <PackageTags>$(PackageTags) MIDI</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
